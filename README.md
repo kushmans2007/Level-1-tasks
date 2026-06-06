@@ -1,4 +1,4 @@
-# LEVEL 1 
+# LEVEL 1 REPORT
 # Cloud Computing 
 ## TASK 2 : Exploring Docker Fundamentals  
 Virtual Machines virtualize the entire hardware and run their own operating system, while Containers share the host operating system and only package the application with its dependencies.  
