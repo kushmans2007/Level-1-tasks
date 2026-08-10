@@ -100,7 +100,7 @@ In this task, I learned the basic concepts of Kubernetes, including Clusters, No
 * A Kubernetes Cluster is a group of one or more machines (called nodes) that work together to run and manage containerized applications.  
 * A Node is a physical or virtual machine in a Kubernetes cluster where Pods are executed. Nodes provide the CPU, memory, and storage needed to run applications.  
 * A Pod is the smallest deployable unit in Kubernetes. It contains one or more containers that share the same network and storage resources.  
-*The Control Plane is the management component of Kubernetes. It schedules Pods, monitors the health of the cluster, manages resources, and ensures that the cluster remains in the desired state. 
+* The Control Plane is the management component of Kubernetes. It schedules Pods, monitors the health of the cluster, manages resources, and ensures that the cluster remains in the desired state. 
 
 I created a Pod manifest file (nginx-pod.yaml) using YAML to deploy an Nginx container. Using Docker Desktop's Kubernetes cluster and kubectl commands, I deployed the Pod, verified that it was running successfully, inspected its details, and viewed its logs. This task provided hands-on experience in deploying and managing containers using Kubernetes.
 ![k8](5a%20(2).png)  
