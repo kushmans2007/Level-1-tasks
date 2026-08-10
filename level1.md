@@ -319,4 +319,59 @@ Traceroute shows each router's IP address and the delay at every hop.
 * Local Users and Groups Management (lusrmgr.msc) allows administrators to manage user accounts, create groups, and assign permissions by adding users to different groups.
 ## TASK 17: Windows: Security
 * Windows Security is a built-in protection system that helps safeguard the computer from viruses, malware, and other cyber threats.
-* It includes features such as Virus & Threat Protection, App   
+* It includes features such as Virus & Threat Protection, App & Browser Control, and Device Security to enhance system safety.
+* The Windows Firewall monitors and controls incoming and outgoing network traffic, preventing unauthorized access to the system.
+* Windows Firewall supports Domain, Private, and Public network profiles, allowing different security levels based on the type of network being used.
+## TASK 18: Linux:Introduction
+* Linux is a lightweight, open-source operating system widely used in web servers, automotive systems, retail devices, and critical infrastructure because of its reliability and performance.
+* Linux has many distributions (distros), such as Ubuntu and Debian, which are customized for different purposes like desktop computing and server management.
+* Ubuntu is one of the most popular Linux distributions due to its user-friendly interface, flexibility, and ability to run efficiently even on systems with low hardware resources.
+## TASK 19: Linux:File Systems
+* Linux provides command-line tools to create, copy, move, rename, and delete files and directories efficiently.
+* The touch command creates a new empty file, while the mkdir command is used to create a new directory (folder).
+* The cp command copies files or directories, and the mv command is used to move files or rename them.
+* The rm command permanently deletes files, and rm -R is used to delete directories and their contents recursively.
+* The file command identifies the actual type of a file, regardless of its file extension, making it useful for verifying file contents.
+## TASK 20:  Others: Cryptography - Part 1
+* Cryptography is the practice of protecting information to ensure secure communication by maintaining confidentiality, integrity, and authenticity.
+* It is widely used in applications such as online banking, HTTPS websites, SSH connections, encrypted messaging, and secure file transfers.
+* Encryption converts readable plaintext into unreadable ciphertext using a cipher and a key, preventing unauthorized access.
+* Decryption reverses the encryption process, converting ciphertext back into plaintext using the correct key.
+* The main components of cryptography are plaintext, ciphertext, cipher, key, encryption, and decryption, which work together to secure digital information.
+* Cryptography also helps organizations comply with security standards and regulations such as PCI DSS, HIPAA, and GDPR, ensuring sensitive data is protected both in storage and during transmission.
+## TASK 21: Cryptography -part2 
+Types of Encryption :  
+* Symmetric encryption :
+  * Symmetric encryption uses a single secret key for both encryption and decryption.
+  * The main challenge of symmetric encryption is securely sharing the secret key between the sender and receiver.
+  * Common symmetric algorithms include DES, 3DES, and AES. AES is the modern and widely used standard.
+  * AES supports 128-bit, 192-bit, and 256-bit keys and provides strong security with high performance.  
+* Asymmetric encryption:  
+  * Asymmetric encryption uses two mathematically related keys: a public key and a private key.
+  * The public key can be openly shared, while the private key must be kept secret by its owner.
+  * Asymmetric cryptography is based on mathematical problems that are easy to compute in one direction but extremely difficult to reverse without the private key.
+  * Common asymmetric algorithms include RSA, Diffie-Hellman, and ECC.
+## TASK 23: Principles of CyberSecurity: CIA
+The CIA Triad is the foundation of cybersecurity and consists of :
+* Confidentiality  
+* Integrity   
+* Availability.
+
+## TASK 24: Principles of CyberSecurity: CIA - Explanantion
+
+
+* The CIA Triad represents the three fundamental principles of cybersecurity: Confidentiality, Integrity, and Availability.
+* Confidentiality ensures that sensitive information is accessible only to authorized users and is protected from unauthorized disclosure.
+* Integrity ensures that data remains accurate, complete, and trustworthy and is not improperly modified or deleted.
+* Availability ensures that systems, applications, and data are accessible to authorized users whenever they are needed, even during failures or attacks.
+## TASK 25: Path 1 - Red Teaming
+* Offensive security involves actively testing systems, networks, and applications to identify vulnerabilities before real attackers can exploit them.
+* Security professionals analyze systems from an attacker’s perspective by identifying exposed components, accessible resources, and potential weaknesses.
+* Ethical hacking and penetration testing are legal and authorized activities performed to discover security vulnerabilities and help organizations fix them.
+* Offensive security follows a structured methodology, where security professionals discover weaknesses, analyze their impact, and use the findings to strengthen the overall security of the system.
+## TASK 26: Red Teaming Continuation
+* Offensive security involves legally and safely testing systems to identify vulnerabilities before real attackers can exploit them.
+* Penetration testing is an authorized security assessment used to discover and exploit weaknesses within a defined scope.
+* Web enumeration involves identifying hidden or unintended pages, directories, and resources that may be accessible on a web application.
+* Gobuster is an automated tool used to discover hidden directories and files by testing many possible paths from a wordlist.
+* The command gobuster dir --url <target> -w <wordlist> performs directory enumeration, helping security testers identify potentially exposed web resources.  
