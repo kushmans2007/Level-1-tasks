@@ -1,5 +1,49 @@
-# LEVEL 1 
+ # LEVEL 1 
 # Cloud Computing 
+## TASK 1: Working with Git and GitHub Basics
+Version Control is a system that records and manages changes made to files over time, allowing you to track modifications, collaborate with others, and restore previous versions when needed.  
+The two main types are:
+
+1 Centralized Version Control System (CVCS): In a Centralized Version Control System, there is one central server that stores the entire project and its history.
+
+2 Distributed Version Control System (DVCS): In a Distributed Version Control System, every developer has a complete copy of the repository, including all files and history.    
+
+A branch is an independent line of development in Git.It allows developers to work on new features, bug fixes, or experiments without affecting the main codebase.
+ 
+```
+Create Branch : git checkout -b feature
+      ↓
+Make Changes
+      ↓
+Commit : 
+git add .
+git commit -m "Added new feature"
+
+      ↓
+Push Branch : git push -u origin feature-login
+      ↓
+Open Pull Request
+      ↓
+Merge into Main
+```  
+Git Rebase: Git Rebase is a command that moves  your branch's commits on top of another branch, creating a cleaner and more linear commit history. 
+``` 
+# Switch to feature branch
+git checkout feature-login
+
+# Update feature branch with latest main
+git rebase main
+
+# Resolve conflicts if any
+git add .
+git rebase --continue
+
+# Push updated history
+git push --force-with-lease
+```  
+git cheery-pick is a Git command that copies a specific commit from one branch and applies it onto another branch.  
+![opensource](1,.png)
+
 ## TASK 2 : Exploring Docker Fundamentals  
 Virtual Machines virtualize the entire hardware and run their own operating system, while Containers share the host operating system and only package the application with its dependencies.  
 Features|Virtual Machine  |     Container   
@@ -34,35 +78,35 @@ Dockerfile Directives :
 * RUN: Executes commands while building the image
 * CMD: Specifies the default command when the container starts.  
 
+Each Dockerfile instruction adds a snapshot of changes on top of the previous image state, and Docker builds the final filesystem by stacking those snapshots together  
+* docker history  image-name:  helps visualize how layers were created
+
 ```
-# Build image
-docker build -t mywebapp .
+# Build image: docker build -t mywebapp .
+# View image: docker images
+# Run container: docker run -d --name webcontainer -p 8080:80 mywebapp
+# Check running containers: docker ps
+# View logs: docker logs webcontainer
+# View image layers: docker history mywebapp
+# Stop container: docker stop webcontainer
+# Remove container: docker rm webcontainer
+# Remove image: docker rmi mywebapp
+```    
 
-# View image
-docker images
-
-# Run container
-docker run -d --name webcontainer -p 8080:80 mywebapp
-
-# Check running containers
-docker ps
-
-# View logs
-docker logs webcontainer
-
-# View image layers
-docker history mywebapp
-
-# Stop container
-docker stop webcontainer
-
-# Remove container
-docker rm webcontainer
-
-# Remove image
-docker rmi mywebapp
-```  
 ![dockerfile](3.png) 
+## TASK 5: Kubernetes Basics and Writing Pod Specs
+In this task, I learned the basic concepts of Kubernetes, including Clusters, Nodes, Pods, and the Control Plane.  
+* Kubernetes is an open-source platform that automates the deployment, management, scaling, and monitoring of containerized applications across a cluster of machines.  
+* A Kubernetes Cluster is a group of one or more machines (called nodes) that work together to run and manage containerized applications.  
+* A Node is a physical or virtual machine in a Kubernetes cluster where Pods are executed. Nodes provide the CPU, memory, and storage needed to run applications.  
+* A Pod is the smallest deployable unit in Kubernetes. It contains one or more containers that share the same network and storage resources.  
+*The Control Plane is the management component of Kubernetes. It schedules Pods, monitors the health of the cluster, manages resources, and ensures that the cluster remains in the desired state. 
+
+I created a Pod manifest file (nginx-pod.yaml) using YAML to deploy an Nginx container. Using Docker Desktop's Kubernetes cluster and kubectl commands, I deployed the Pod, verified that it was running successfully, inspected its details, and viewed its logs. This task provided hands-on experience in deploying and managing containers using Kubernetes.
+![k8](5a%20(2).png)  
+
+![k8](5b.png)
+
 # Cybersecurity
 ## TASK 1 : Fundamentals of Computer Networking :Introduction
 A network is a group of things connected together to share information or resources.  
@@ -131,3 +175,148 @@ Time To Live (TTL)|	Limits how long a packet can exist on the network. If it tak
 Checksum	|Verifies data integrity. If the data changes during transmission, the checksum will not match and the packet will be considered corrupted.
 Source Address	|The IP address of the device that sent the packet.
 Destination Address	|The IP address of the device that should receive the packet.
+## TASK 6: Networking Devices
+Switch:   
+* Connects devices within a LAN.  
+* Operates mainly at OSI Layer 2 (Data Link Layer).  
+* Uses MAC addresses for forwarding data.  
+* Sends data only to the intended device.  
+* Improves network performance, security, and efficiency.  
+* Uses packet switching to transmit data in small packets.  
+
+Access Point (AP):  
+* Provides wireless access to a wired LAN.  
+* Operates at OSI Layer 1 (Physical) and Layer 2 (Data Link).  
+* Acts as a bridge between wired and wireless networks.  
+* Supports multiple wireless devices simultaneously.  
+* Modern APs support technologies like
+Wi-Fi 6 (802.11ax) for faster and more efficient communication,MU-MIMO (Multi-User Multiple Input Multiple Output) to serve multiple devices at the same time.  
+
+Hub:  
+* Connects multiple devices within a LAN.
+* Operates at OSI Layer 1 (Physical Layer).
+* Broadcasts data to all connected devices.
+* Does not use MAC or IP addresses to forward data.
+* Functions as a multiport repeater.
+* Supports half-duplex communication.  
+
+Router:
+* Connects different networks and enables internet access.
+* Forwards packets based on IP addresses.
+* Uses routing tables to determine the optimal path.
+* Supports NAT, DHCP, VPN, firewall, and QoS.
+* Essential for communication between LANs and WANs.
+
+Firewall:   
+* Monitors and filters incoming and outgoing network traffic
+Acts as a security barrier between trusted and untrusted networks.
+* Filters traffic based on security policies.
+* Prevents unauthorized access and cyber threats.
+* Modern NGFWs offer DPI, application awareness, and real-time threat detection.
+* Can be implemented as hardware, software, or cloud-based firewalls.   
+ 
+Intrusion Detection and Prevention System (IDPS): 
+* IDPS combines the features of IDS and IPS.
+* IDS (Detection): Passive monitoring and alert generation.
+* IPS (Prevention): Active monitoring and automatic threat blocking.
+*  Helps protect networks from cyberattacks and unauthorized access.
+* Provides real-time monitoring, detection, and prevention of security threats.  
+
+Virtual Private Network (VPN):  
+* Creates a secure, encrypted tunnel for data transmission.
+* Protects data from eavesdropping and unauthorized access.
+* Enables secure remote access to private networks.
+* Securely connects multiple branch offices.
+* Supports Multi-Factor Authentication (MFA) for enhanced security.
+* Ensures privacy, confidentiality, and data integrity.
+
+ Multilayer Switch:  
+* Combines switching (Layer 2) and routing (Layer 3) in one device.
+* Forwards data using MAC addresses and routes packets using IP addresses.
+* Performs inter-VLAN routing without a separate router.
+* Uses ASIC hardware for high-speed, wire-speed processing.
+* Supports Quality of Service (QoS) to prioritize important traffic.
+* Enhances network performance, scalability, and security.  
+## TASK 7: DNS – Domain Name System: 
+DNS acts like the "phonebook of the Internet", allowing users to access websites using easy-to-remember names instead of numerical IP addresses.  
+How DNS Works (Simple Flow):  
+* User enters a domain name (e.g., www.example.com).
+* Browser and OS check their DNS cache.
+* If not found, the request goes to the DNS Resolver.
+* The resolver queries the Root DNS Server.
+* The Root Server points to the TLD Server.
+* The TLD Server points to the Authoritative DNS Server.
+* The Authoritative Server returns the website's IP address.
+* The browser connects to the web server using the IP address and loads the website. 
+## TASK 8: DHCP 
+* DHCP is an application-layer protocol that automatically assigns network settings such as IP address, subnet mask, default gateway, and DNS server to devices.
+* It uses UDP, with the server on port 67 and the client on port 68.
+* DHCP eliminates the need for manual network configuration and helps prevent IP address conflicts.
+* The DHCP process follows DORA: Discover → Offer → Request → Acknowledge.
+I* nitially, the client has no IP address, so it sends a broadcast request (0.0.0.0 → 255.255.255.255) to find a DHCP server.
+* After the DHCP process completes, the device receives all required network settings and can connect to the Internet automatically.
+## TASK 9: ICMP
+* ICMP (Internet Control Message Protocol) is used for network diagnostics and error reporting.
+*Ping uses ICMP to check if a host is reachable and measures Round-Trip Time (RTT).
+* Ping sends an Echo Request (Type 8) and receives an Echo Reply (Type 0).
+* Traceroute (tracert) uses ICMP to discover the path (hops) packets take to a destination.
+* It works by using the TTL (Time-To-Live) value, with routers sending ICMP Time Exceeded (Type 11) messages.
+Traceroute shows each router's IP address and the delay at every hop.
+## TASK 10: HTTP(S)
+* HTTP (HyperText Transfer Protocol) is an application-layer protocol used for communication between a web browser (client) and a web server.  
+* HTTP follows a Request–Response model: the browser sends an HTTP request, and the server sends back an HTTP response containing the requested webpage or data.
+* Common HTTP methods include:
+
+  * GET – Retrieve data  
+  * POST – Send/Create data  
+  * PUT – Update an entire resource  
+  * PATCH – Update part of a resource  
+  * DELETE – Remove a resource  
+* HTTPS (HyperText Transfer Protocol Secure) is the secure version of HTTP that uses TLS/SSL encryption to protect communication between the client and server.  
+* HTTPS provides three major security features:
+
+  * Confidentiality – Encrypts data
+  * Authentication – Verifies the website using a digital certificate
+  * Integrity – Ensures data is not altered during transmission
+
+## TASK 11:OSI (OPEN SYSTEM INTERCONNECTION)
+* The OSI Model is a conceptual framework that explains how data is transmitted between devices over a network using seven layers, with each layer performing a specific function.
+* The Physical Layer (Layer 1) is responsible for transmitting raw bits through physical media such as cables, fiber optics, or wireless signals.
+* The Data Link Layer (Layer 2) organizes bits into frames, provides error detection, and uses MAC addresses to deliver data between devices on the same network.
+* The Network Layer (Layer 3) handles routing of data across multiple networks using IP addresses. The Internet Protocol (IP) operates at this layer.
+* The Transport Layer (Layer 4) ensures end-to-end communication. TCP provides reliable, ordered, and error-checked delivery, while UDP offers faster but less reliable communication.
+* The Application, Presentation, and Session Layers (Layers 5–7) support user applications, data formatting, encryption, compression, and communication management. In practice, these layers are often combined.
+* Importance of the OSI Model: Although it is mainly used for education, the OSI model helps in understanding network communication, troubleshooting issues, and classifying networking devices such as Layer 4 (L4) and Layer 7 (L7) load balancers.  
+## TASK 12: Windows: Introduction
+* Windows File Management: Windows uses File Explorer to organize files and folders, making it easy to store, access, and manage data efficiently.
+* System Maintenance: Regular Windows updates improve security, fix bugs, and enhance system performance, keeping the computer stable and protected.
+* Application Management: Applications should be installed only from trusted sources, kept updated, and uninstalled when no longer needed to maintain security and performance.
+* System Monitoring and Settings: Windows Settings, Control Panel, and Task Manager help users configure system options, monitor resource usage, and troubleshoot performance issues.
+## TASK 13:Windows: Powershell
+* PowerShell is a cross-platform command-line shell and scripting language developed by Microsoft to automate tasks, manage systems, and configure devices efficiently.
+* Unlike the traditional Command Prompt, PowerShell works with objects instead of plain text, making data processing more accurate and easier to automate.
+* PowerShell is built on the .NET framework and is available on Windows, macOS, and Linux, enabling cross-platform administration.
+* It is widely used by system administrators for automation, system management, and advanced scripting, helping reduce manual work and improve productivity.
+## TASK 14:Windows: Powershell vs CMD
+|Feature	|Command Prompt (CMD)|	PowerShell|
+|-------|-----|--------|
+|1. Data Handling   |  	Works with plain text output|	  Works with structured objects
+|2. Scripting |	Supports basic batch (.bat) | scripts	Supports advanced PowerShell (.ps1) scripting
+|3. Automation |	Limited automation capabilities	      |  Powerful automation using cmdlets and scripts
+|4. Remote Administration  |	Not designed for remote system management  |	Supports remote administration of systems
+|5. Platform Support |	Available only on Windows |	Available on Windows, Linux, and macOS
+
+## TASK 15: Windows: System32
+* The Windows directory (usually C:\Windows) contains the essential files required for the Windows operating system to function properly.
+* Environment variables, such as %windir%, help Windows and applications locate important system folders regardless of where Windows is installed.
+* The System32 folder is a critical part of the Windows directory, storing essential system files, drivers, and built-in utilities needed by the operating system.
+* Users should avoid modifying or deleting files in the System32 folder, as doing so can cause system errors or make Windows unstable.
+## TASK 16: Windows: User Accounts & UAC
+* Windows provides two main types of user accounts: Administrator and Standard User, each with different levels of access and permissions.
+* Administrator accounts can install software, manage users, change system settings, and perform other system-wide administrative tasks.
+* Standard User accounts can access and manage personal files but cannot make changes that affect the operating system or other users.
+* Each user has a user profile stored in the C:\Users directory, which contains personal folders such as Desktop, Documents, Downloads, Pictures, and Music.
+* Local Users and Groups Management (lusrmgr.msc) allows administrators to manage user accounts, create groups, and assign permissions by adding users to different groups.
+## TASK 17: Windows: Security
+* Windows Security is a built-in protection system that helps safeguard the computer from viruses, malware, and other cyber threats.
+* It includes features such as Virus & Threat Protection, App   
