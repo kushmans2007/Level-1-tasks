@@ -1,4 +1,4 @@
- # LEVEL 1 
+# LEVEL 1 
 # Cloud Computing 
 ## TASK 1: Working with Git and GitHub Basics
 Version Control is a system that records and manages changes made to files over time, allowing you to track modifications, collaborate with others, and restore previous versions when needed.  
@@ -94,19 +94,58 @@ Each Dockerfile instruction adds a snapshot of changes on top of the previous im
 ```    
 
 ![dockerfile](3.png) 
+## Task 4: Launch and Manage an AWS EC2 Instance
+#### AWS EC2 (Elastic Compute Cloud):
+AWS EC2 is a cloud computing service that provides resizable virtual servers, called instances, for running applications and services.
+#### EC2 Instance:  
+An EC2 instance is a virtual computer running in the AWS cloud with allocated CPU, memory, storage, and networking resources.  
+
+In this task, I explored AWS EC2 (Elastic Compute Cloud) and learned how to launch and configure a virtual server in the AWS cloud. I launched an Ubuntu EC2 instance,selected an appropriate instance type, configured its Security Group to allow SSH access on port 22 and HTTP access on port 80, and connected to the instance securely using an SSH client with a key pair.I understood how EC2 can be used to deploy and access web applications over the internet. 
+![instance](4.a.png)
+![ssh](4.b.png)
+![browser](4.c.png)
+
 ## TASK 5: Kubernetes Basics and Writing Pod Specs
 In this task, I learned the basic concepts of Kubernetes, including Clusters, Nodes, Pods, and the Control Plane.  
 * Kubernetes is an open-source platform that automates the deployment, management, scaling, and monitoring of containerized applications across a cluster of machines.  
 * A Kubernetes Cluster is a group of one or more machines (called nodes) that work together to run and manage containerized applications.  
 * A Node is a physical or virtual machine in a Kubernetes cluster where Pods are executed. Nodes provide the CPU, memory, and storage needed to run applications.  
 * A Pod is the smallest deployable unit in Kubernetes. It contains one or more containers that share the same network and storage resources.  
-*The Control Plane is the management component of Kubernetes. It schedules Pods, monitors the health of the cluster, manages resources, and ensures that the cluster remains in the desired state. 
+* The Control Plane is the management component of Kubernetes. It schedules Pods, monitors the health of the cluster, manages resources, and ensures that the cluster remains in the desired state. 
 
 I created a Pod manifest file (nginx-pod.yaml) using YAML to deploy an Nginx container. Using Docker Desktop's Kubernetes cluster and kubectl commands, I deployed the Pod, verified that it was running successfully, inspected its details, and viewed its logs. This task provided hands-on experience in deploying and managing containers using Kubernetes.
 ![k8](5a%20(2).png)  
 
 ![k8](5b.png)
 
+## TASK 6: Manage AWS S3 and IAM with CLI
+In this task, I learned the fundamentals of AWS IAM and Amazon S3 and how they work together to provide secure cloud storage. I learned about IAM users, roles, and policies, and understood the importance of least-privilege access, where users are given only the permissions they need. I also learned how to configure the AWS CLI with credentials and verify connectivity to AWS services.
+I also gained practical experience managing S3 buckets and objects using AWS CLI commands. I created an S3 bucket, uploaded files, listed bucket contents, downloaded objects, and tested object deletion. I also applied IAM policies to restrict specific S3 actions for a user, which helped me understand how access control can be used to secure cloud resources.
+![s3](6A.png)
+![s3](6B.png)
+
+## TASK 7: Deploy a Containerized Application on Kubernetes
+I containerized my own web application using a Dockerfile and deployed it to a local Kubernetes cluster using a Deployment YAML file. The Deployment was configured to manage multiple replicas of the application. I also created ClusterIP and NodePort Services using YAML manifests, where ClusterIP provided internal access to the application and NodePort exposed it externally for browser access. I verified the deployment using commands such as kubectl get nodes, kubectl get deployments, and kubectl get pods.
+
+I further practiced managing and monitoring the deployed application using commands such as kubectl get services, kubectl get endpoints, and kubectl describe. I scaled the application from 3 replicas to 5 and then back to 2 replicas using kubectl scale and observed how Kubernetes manages the Pods during scaling. Finally, I accessed my application through localhost:30080 and verified that it was running successfully.    
+
+![kubectl](7A.png)
+![application](7B.png)
+
+## TASK 8: Use Kubernetes Secrets and Environment Variables
+In this task, I learned how Kubernetes manages application configuration using ConfigMaps and Secrets. I created a ConfigMap to store non-sensitive configuration such as the application name and environment, and a Kubernetes Secret to store sensitive AWS credentials. I learned how to inject these values into Pods as environment variables using configMapKeyRef and secretKeyRef, instead of hardcoding sensitive information directly into the application configuration. This helped me understand the difference between configuration data and sensitive data and the importance of handling credentials securely.
+I also learned how to integrate a Kubernetes Pod with AWS S3 using the AWS CLI. I created an AWS CLI Pod, provided the AWS credentials through the Kubernetes Secret, and monitored the Pod until it reached the Running state. Finally, I used the aws s3 ls command inside the Pod to verify that the credentials were working and that the Pod could successfully access the S3 bucket.
+![CONFIGMAP](8A.png)
+![CONFIGMAP](8B.png)
+![CONFIGMAP](8C.png)
+
+## TASK 9: Deploy an App to Push Files from Kubernetes to S3
+In this task, I learned how to build and containerize a file-upload web application using HTML, CSS, JavaScript, Python Flask, and Boto3. I integrated the application with AWS S3 so that files selected through the web interface could be uploaded to an S3 bucket. I learned how Docker packages the application along with its required Python dependencies and provides a consistent environment for running the application. I also understood how Flask handles the file-upload request and how Boto3 is used to communicate with AWS S3.
+I also learned how to deploy the Dockerized application on Kubernetes and securely provide AWS credentials using Kubernetes Secrets instead of hardcoding them in the application. I created a Kubernetes Deployment and Service, accessed the application using port forwarding, and verified that files uploaded through the Kubernetes application were successfully stored in the S3 bucket.
+![kubectl](9C.png)
+![kubectl](9D.png)
+![app](9A.png)
+![s3](9B.png)
 # Cybersecurity
 ## TASK 1 : Fundamentals of Computer Networking :Introduction
 A network is a group of things connected together to share information or resources.  
@@ -249,15 +288,16 @@ How DNS Works (Simple Flow):
 * The Authoritative Server returns the website's IP address.
 * The browser connects to the web server using the IP address and loads the website. 
 ## TASK 8: DHCP 
-* DHCP is an application-layer protocol that automatically assigns network settings such as IP address, subnet mask, default gateway, and DNS server to devices.
+* DHCP( Dynamic Host Configuration Protocol ) is an application-layer protocol that automatically assigns network settings such as IP address, subnet mask, default gateway, and DNS server to devices.
 * It uses UDP, with the server on port 67 and the client on port 68.
 * DHCP eliminates the need for manual network configuration and helps prevent IP address conflicts.
 * The DHCP process follows DORA: Discover → Offer → Request → Acknowledge.
-I* nitially, the client has no IP address, so it sends a broadcast request (0.0.0.0 → 255.255.255.255) to find a DHCP server.
+* Initially, the client has no IP address, so it sends a broadcast request (0.0.0.0 → 255.255.255.255) to find a DHCP server.
 * After the DHCP process completes, the device receives all required network settings and can connect to the Internet automatically.
 ## TASK 9: ICMP
-* ICMP (Internet Control Message Protocol) is used for network diagnostics and error reporting.
-*Ping uses ICMP to check if a host is reachable and measures Round-Trip Time (RTT).
+* ICMP is a Network Layer (Layer 3) protocol used mainly for sending error messages and network status/diagnostic information.
+* ICMP helps network devices tell each other what is happening with IP traffic.
+* Ping uses ICMP to check if a host is reachable and measures Round-Trip Time (RTT).
 * Ping sends an Echo Request (Type 8) and receives an Echo Reply (Type 0).
 * Traceroute (tracert) uses ICMP to discover the path (hops) packets take to a destination.
 * It works by using the TTL (Time-To-Live) value, with routers sending ICMP Time Exceeded (Type 11) messages.
@@ -374,4 +414,4 @@ The CIA Triad is the foundation of cybersecurity and consists of :
 * Penetration testing is an authorized security assessment used to discover and exploit weaknesses within a defined scope.
 * Web enumeration involves identifying hidden or unintended pages, directories, and resources that may be accessible on a web application.
 * Gobuster is an automated tool used to discover hidden directories and files by testing many possible paths from a wordlist.
-* The command gobuster dir --url <target> -w <wordlist> performs directory enumeration, helping security testers identify potentially exposed web resources.  
+* The command gobuster dir --url <target> -w <wordlist> performs directory enumeration, helping security testers identify potentially exposed web resources.
